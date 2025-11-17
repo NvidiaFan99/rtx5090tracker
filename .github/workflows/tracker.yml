@@ -1,8 +1,6 @@
-name: RTX 5090 FE Tracker
+name: RTX 5090 FE Tracker Test
 
 on:
-  schedule:
-    - cron: "*/2 * * * *"
   workflow_dispatch:
 
 jobs:
@@ -13,7 +11,7 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-      - run: pip install -r requirements.txt
-      - run: python tracker.py
+      - run: pip install requests
+      - run: python test_discord.py
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
